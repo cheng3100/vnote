@@ -7,6 +7,7 @@
 #include <QSpinBox>
 #include <QDoubleSpinBox>
 #include <QToolButton>
+#include <QFormLayout>
 
 #include "lineedit.h"
 #include "combobox.h"
@@ -65,4 +66,16 @@ QToolButton *WidgetsFactory::createToolButton(QWidget *p_parent)
     auto tb = new QToolButton(p_parent);
     tb->setPopupMode(QToolButton::MenuButtonPopup);
     return tb;
+}
+
+QFormLayout *WidgetsFactory::createFormLayout(QWidget *p_parent)
+{
+    auto layout = new QFormLayout(p_parent);
+
+#if defined(Q_OS_MACOS)
+    layout->setFieldGrowthPolicy(QFormLayout::AllNonFixedFieldsGrow);
+    layout->setFormAlignment(Qt::AlignLeft | Qt::AlignTop);
+#endif
+
+    return layout;
 }

@@ -36,7 +36,7 @@ void NodeInfoWidget::setupUI(const Node *p_parentNode, Node::Type p_newNodeType)
     const bool createMode = m_mode == Mode::Create;
     const bool isNote = p_newNodeType == Node::Type::File;
 
-    m_mainLayout = WidgetUtils::createFormLayout(this);
+    m_mainLayout = WidgetsFactory::createFormLayout(this);
 
     m_mainLayout->addRow(tr("Notebook:"),
                          new QLabel(p_parentNode->getNotebook()->getName(), this));
